@@ -1,0 +1,163 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Editorial founder portfolio design system.
+ * Warm paper background, near-black ink, bright orange accent.
+ * All colors are oklch tokens; never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-paper: var(--paper);
+  --color-paper-deep: var(--paper-deep);
+  --color-moss: var(--moss);
+  --color-moss-foreground: var(--moss-foreground);
+  --color-hairline: var(--hairline);
+  --color-hairline-inverse: var(--hairline-inverse);
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --shadow-card: 0 24px 60px -32px color-mix(in oklab, var(--ink) 45%, transparent);
+  --shadow-accent: 0 18px 40px -22px color-mix(in oklab, var(--accent) 65%, transparent);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  --paper: oklch(0.954 0.017 92.5);
+  --paper-deep: oklch(0.921 0.021 92.5);
+  --ink: oklch(0.192 0.006 96);
+  --ink-foreground: oklch(0.962 0.013 92.5);
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: oklch(0.978 0.011 92.5);
+  --card-foreground: var(--ink);
+  --popover: oklch(0.978 0.011 92.5);
+  --popover-foreground: var(--ink);
+
+  --primary: var(--ink);
+  --primary-foreground: var(--ink-foreground);
+  --secondary: var(--paper-deep);
+  --secondary-foreground: var(--ink);
+  --muted: var(--paper-deep);
+  --muted-foreground: oklch(0.505 0.012 92);
+
+  --accent: oklch(0.664 0.212 38.5);
+  --accent-foreground: oklch(0.985 0.008 92);
+
+  --moss: oklch(0.552 0.062 145);
+  --moss-foreground: oklch(0.972 0.012 145);
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0.008 92);
+
+  --hairline: oklch(0.192 0.006 96 / 14%);
+  --hairline-inverse: oklch(0.98 0.01 92 / 18%);
+  --border: var(--hairline);
+  --input: var(--hairline);
+  --ring: var(--accent);
+}
+
+.dark {
+  --background: var(--ink);
+  --foreground: var(--ink-foreground);
+  --card: oklch(0.24 0.008 96);
+  --card-foreground: var(--ink-foreground);
+  --popover: oklch(0.24 0.008 96);
+  --popover-foreground: var(--ink-foreground);
+  --primary: var(--ink-foreground);
+  --primary-foreground: var(--ink);
+  --secondary: oklch(0.28 0.008 96);
+  --secondary-foreground: var(--ink-foreground);
+  --muted: oklch(0.28 0.008 96);
+  --muted-foreground: oklch(0.72 0.012 92);
+  --border: var(--hairline-inverse);
+  --input: var(--hairline-inverse);
+}
+
+@utility hairline-t {
+  border-top: 1px solid var(--hairline);
+}
+
+@utility hairline-b {
+  border-bottom: 1px solid var(--hairline);
+}
+
+@utility serif-em {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+}
+
+@utility orbit-ring {
+  position: absolute;
+  border-radius: 9999px;
+  border: 1px solid var(--hairline);
+  pointer-events: none;
+}
+
+@utility text-balance-tight {
+  text-wrap: balance;
+  letter-spacing: -0.03em;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
